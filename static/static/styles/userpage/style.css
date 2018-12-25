@@ -153,6 +153,8 @@ h1, h2, h3, h4, h5, h6, figure {
   padding: 5px 10px;
   color: #000;
 }
+
+
 @media screen and (max-width: 768px) {
   .fh5co-nav .menu-1 {
     display: none;
@@ -299,6 +301,7 @@ h1, h2, h3, h4, h5, h6, figure {
   font-size: 18px;
   color: #000;
 }
+
 
 #fh5co-counter,
 .fh5co-bg,
@@ -959,7 +962,7 @@ h1, h2, h3, h4, h5, h6, figure {
   top: 0;
   bottom: 0;
   padding: 75px 40px 40px 40px;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
   display: none;
   -moz-transform: translateX(270px);
   -webkit-transform: translateX(270px);
@@ -970,7 +973,7 @@ h1, h2, h3, h4, h5, h6, figure {
   -o-transition: 0.5s;
   transition: 0.5s;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1366px) {
   #fh5co-offcanvas {
     display: block;
   }
@@ -991,11 +994,14 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-offcanvas ul {
   padding: 0;
   margin: 0;
+  line-break: normal;
 }
 #fh5co-offcanvas ul li {
   padding: 0;
   margin: 0;
   list-style: none;
+  line-break: strict;
+  line-height: 10px;
 }
 #fh5co-offcanvas ul li > ul {
   padding-left: 20px;
@@ -1175,7 +1181,7 @@ h1, h2, h3, h4, h5, h6, figure {
   z-index: 2001;
   border-bottom: none !important;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1366px) {
   .fh5co-nav-toggle {
     display: block;
   }
