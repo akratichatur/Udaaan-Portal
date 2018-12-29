@@ -103,6 +103,8 @@ sub {
 
 img {
   border: 0;
+  width: 100%;
+  border-radius: 50%;
 }
 
 svg:not(:root) {
@@ -363,6 +365,9 @@ figure {
 
 img {
   vertical-align: middle;
+  width: 150px;
+  height: 150px;
+  border-color: black;
 }
 
 .img-responsive {
