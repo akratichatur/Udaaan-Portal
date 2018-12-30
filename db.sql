@@ -1,3 +1,4 @@
+drop database udaaan_portal;
 create Database udaaan_portal;
 use udaaan_portal;
 
@@ -30,24 +31,20 @@ blood_group varchar(5),
 dob date,
 active tinyint(2) default '1',
 creation_timestamp datetime default CURRENT_TIMESTAMP,
-primary key(id,udaaan_id)
+primary key(id)
 );
 
 
 insert into member(udaaan_id,university_id,password,name,photo,email_id,course,department,year,year_of_joining,gender,type,clg_timing,teaching_days,responsibility,blood_group) values
-('udaaan160001','161500048','12345','Akrati Chaturvedi','/static/images/akrati.jpg','akrati.chaturvedi_cs16@gla.ac.in','B.Tech','CSE','3','2016','M','Day Scholar','10-6','Mon,Tue,Sat','Acadmics','A+'),
+('udaaan160001','161500048','12345','Akrati Chaturvedi','/static/images/akrati.jpg','akrati.chaturvedi_cs16@gla.ac.in','B.Tech','CSE','3','2016','M','Day Scholar','10-6','Fri,Tue,Sat','Acadmics','A+'),
 ('udaaan160002','161400018','12345','Pooja Rajora','/static/images/user.png','poojarajora1998@gmail.com','B.Tech','EE','3','2016','F','Hosteler','10-6','Mon,Tue,Wed','Acadmics','A+'),
 ('udaaan160003','161500210','12345','Gagan Saxena','/static/images/user.png','gagan.saxena_cs16@gla.ac.in','B.Tech','CSE','3','2016','M','Hosteler','10-6','Mon,Tue,Sat','Acadmics','A+'),
-('udaaan160004','161500091','12345','Ankita Raj','/static/images/user.png','ankita.gla1_cs16@gla.ac.in','B.Tech','CSE','3','2016','F','Hosteler','10-6','Mon,Tue,Wed','Acadmics','A+'),
-('udaaan160005','161500054','12345','Akshay Kumar Katiha','/static/images/user.png','akshay.katiha_cs16@gla.ac.in','B.Tech','CSE','3','2016','M','Hosteler','10-6','Mon,Tue,Wed','Acadmics','A+'),
-('udaaan160006','161200166','12345','Rahul Tyagi','/static/images/user.png','rahultyyagi166@gmail.com','B.Tech','ME','3','2016','M','Hosteler','10-6','Mon,Tue,Wed','Acadmics','A+'),
-('udaaan160007','161500083','12345','Anjali Goyal','/static/images/user.png','ani.goyal169@gmail.com','B.Tech','CSE','3','2016','F','Day Scholar','10-6','Mon,Sat,Wed','Acadmics','A+'),
-('udaaan160008','161500592','12345','Udit saxena','/static/images/user.png','saxenaudit56@gmail.com','B.Tech','CSE','3','2016','M','Hosteler','10-6','Mon,Tue,Wed','Acadmics','A+'),
-('udaaan160009','161200158','12345','Praveen Sangam Gupta','/static/images/user.png','psg1997gkp@gmail.com','B.Tech','ME','3','2016','M','Hosteler','10-6','Mon,Tue,Wed','Acadmics','A+'),
-('udaaan160010','161500534','12345','Shraddha Jaiswal','/static/images/user.png','shraddha.jaiswal_cs16@gla.ac.in','B.Tech','CSE','3','2016','F','Hosteler','10-6','Mon,Tue,Sat','Acadmics','A+');
-
-
-
+('udaaan160004','161500091','12345','Ankita Raj','/static/images/user.png','ankita.gla1_cs16@gla.ac.in','B.Tech','CSE','3','2016','F','Hosteler','10-6','Thur,Tue,Wed','Acadmics','A+'),
+('udaaan160005','161200166','12345','Rahul Tyagi','/static/images/user.png','rahultyyagi166@gmail.com','B.Tech','ME','3','2016','M','Hosteler','10-6','Mon,Tue,Wed','Acadmics','A+'),
+('udaaan160006','161500083','12345','Anjali Goyal','/static/images/user.png','ani.goyal169@gmail.com','B.Tech','CSE','3','2016','F','Day Scholar','10-6','Mon,Sat,Thur','Acadmics','A+'),
+('udaaan160007','161500592','12345','Udit saxena','/static/images/user.png','saxenaudit56@gmail.com','B.Tech','CSE','3','2016','M','Hosteler','10-6','Mon,Tue,Wed','Acadmics','A+'),
+('udaaan160008','161200158','12345','Praveen Sangam Gupta','/static/images/user.png','psg1997gkp@gmail.com','B.Tech','ME','3','2016','M','Hosteler','10-6','Sun,Tue,Wed','Acadmics','A+'),
+('udaaan160009','161500534','12345','Shraddha Jaiswal','/static/images/user.png','shraddha.jaiswal_cs16@gla.ac.in','B.Tech','CSE','3','2016','F','Hosteler','10-6','Fri,Sun,Sat','Acadmics','A+');
 
 
 
@@ -67,9 +64,7 @@ dob date,
 year_of_joining tinyint(5),
 active tinyint(2) default '1',
 creation_timestamp datetime default CURRENT_TIMESTAMP,
-primary key(id,udaaan_id)
-
-
+primary key(id)
 );
 
 create table alumini
@@ -90,8 +85,7 @@ blood_group varchar(5),
 dob date,
 active tinyint(2) default '1',
 creation_timestamp datetime default CURRENT_TIMESTAMP,
-primary key(id,udaaan_id)
-
+primary key(id)
 );
 
 
@@ -113,3 +107,28 @@ insert into updates(id,udaaan_id,update_title,update_description) values
 (4,'udaaan160001','Facilis ipsum nemo molestias','Facilis ipsum nemo molestias.'),
 (5,'udaaan160001','Facilis ipsum nemo molestias','Facilis ipsum nemo molestias.'),
 (6,'udaaan160001','Facilis ipsum nemo molestias','Facilis ipsum nemo molestias.');
+
+
+
+
+create table transportation
+(
+id int unsigned not null auto_increment,
+udaaan_id varchar(20) not null unique,
+transportation_days_take varchar(30),
+transportation_days_leave varchar(200),
+creation_timestamp datetime default CURRENT_TIMESTAMP,
+primary key(id),
+foreign key(udaaan_id) references member(udaaan_id)
+);
+
+insert into transportation(udaaan_id,transportation_days_take,transportation_days_leave) values
+('udaaan160001','Mon,Wed','Tue'),
+('udaaan160002','Tue,Wed','Tue'),
+('udaaan160003','Sun,Thru','Sun'),
+('udaaan160004','Sat,Thru','Mon'),
+('udaaan160005','Mon,Fri','Mon'),
+('udaaan160006','Sat,Sun','Wed'),
+('udaaan160007','Thru,Fri','Fri'),
+('udaaan160008','Mon,Tue','Sat'),
+('udaaan160009','Mon,Sat','Wed');
