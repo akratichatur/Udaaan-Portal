@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>UserPage &mdash; Udaaan Portal</title>
+<title>UserPage | Udaaan Portal</title>
+<link rel="shortcut icon" href="/static/images/udaaan/1.jpg">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Udaaan Portal" />
 <meta name="keywords" content="Udaaan Aasma Tak Portal, Udaaan Portal , udaan portal, GLAU, NGO Portal,udaaanaasmatak,udaaan" />
@@ -32,6 +33,13 @@
 <div class="col-sm-7 text-left menu-1">
 <h2><%= userdetails.name %></h2>
 </div>
+<br>
+<div class="col-sm-7 text-left menu-1">
+<h2><% if(userdetails.responsibility=="Attendance") { %>
+      <button><a href="/app/attendance">Upload Attendance</a></button>
+<% } %></h2>
+</div>
+
 <div id="fh5co-offcanvas">
 <ul>
 <li><a href="#">Other Members Details </a></li><br>
@@ -75,6 +83,9 @@
 <h3>Your Attendance</h3>
 <span class="category">Udaaan Aasma Tak</span>
 </div>
+
+
+
 
 <div class="blog-text text-center">
 </div>
@@ -165,31 +176,31 @@
         <h2><span>Members For Today's Transportation</span></h2>
 <br>
         <div class="row">                            <!-- To take Students -->
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-3">
                       <h3>MEMBER</h3><br>
                       <% for(var i in transportlist1) { %>
                         <%= transportlist1[i].name %><br>
                         <% } %>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-sm-2">
                       <h3>YEAR</h3><br>
                       <% for(var i in transportlist1) { %>
                         <%= transportlist1[i].year %><br>
                         <% } %>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-sm-2">
                         <h3>COURSE</h3><br>
                         <% for(var i in transportlist1) { %>
                         <%= transportlist1[i].course %><br>
                         <% } %>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-sm-2">
                         <h3>CONTACT</h3><br>
                         <% for(var i in transportlist1) { %>
                         <%= transportlist1[i].contact_no %><br>
                         <% } %>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-3">
                         <h3>Duty</h3><br>
                         <% for(var i in transportlist1) { %>
                         To Take Students<br>
@@ -197,27 +208,27 @@
                 </div>
         </div>
         <div class="row">                            <!-- To take Students -->
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-3">
                       <% for(var i in transportlist2) { %>
                         <%= transportlist2[i].name %><br>
                         <% } %>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-sm-2">
                       <% for(var i in transportlist2) { %>
                         <%= transportlist2[i].year %><br>
                         <% } %>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-sm-2">
                         <% for(var i in transportlist2) { %>
                         <%= transportlist2[i].course %><br>
                         <% } %>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-sm-2">
                         <% for(var i in transportlist2) { %>
                         <%= transportlist2[i].contact_no %><br>
                         <% } %>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-3">
                         <% for(var i in transportlist2) { %>
                         To Leave Students<br>
                         <% } %>

@@ -18,6 +18,11 @@ module.exports = function(app){
     var userCtrl = require('./../controllers/UserCtrl');
     router.get('/user',userCtrl.showUserPage);
     router.get('/logout', userCtrl.logout);
+
+    var attendanceCtrl = require('./../controllers/AttendanceCtrl');
+    router.get('/attendance',attendanceCtrl.showAttendancePage);
+    router.post('/attend',attendanceCtrl.showAttendPage);
+    router.get('/logout',attendanceCtrl.logout);
     
     //var forgotPasswordCtrl = require('./../controllers/ForgotPasswordCtrl');
     //router.post('/forgot', forgotPasswordCtrl.showForgotPage);

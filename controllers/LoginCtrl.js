@@ -13,7 +13,7 @@ module.exports = {
         var udaaan_id = this.request.body.udaaan_id;
         var password = this.request.body.password;
         var loginerror = false;
-        
+
         var querystring = 'select udaaan_id,name, password from member where udaaan_id = "%s"';
         var query = util.format(querystring,udaaan_id);
         var n = yield databaseUtils.executeQuery(query);
