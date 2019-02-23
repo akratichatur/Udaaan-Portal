@@ -1,102 +1,147 @@
-@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
-.login-block{
-background: #DE6262;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #FFB88C, #DE6262);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #FFB88C, #DE6262); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-float:left;
-width:100%;
-padding : 50px 0;
+ body{
+    margin: 0;
+    padding: 0;
+    background:url(/static/images/bg1.png);
+    background-size: cover;
+    font-family: sans-serif;
+
+
 }
-.banner-sec
+@media (min-width: 600px) {
+.loginbox{
+    width: 500px;
+    height: 425px;
+    background: #f2f2f2;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 70px;
+}
+}
+
+@media (min-width: 600px) {
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+}
+
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+
+@media (max-width: 600px) {
+	.loginbox{
+    width: 650px;
+    height: 900px;
+    background: #f2f2f2;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 70px;
+}
+}
+@media (max-width: 600px) {
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+}
+@media (max-width: 600px) {
+.avatar{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    position: absolute;
+    top: -80px;
+    left: calc(50% - 50px);
+}
+}
+
+.loginbox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.loginbox input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.loginbox input[type="text"], input[type="password"]
 {
-    background:url(/static/images/udaaan/1.jpg)  no-repeat center;
-    background-size: 400px;
-    border-radius: 0 10px 10px 0;
-    padding-top: 180px;
+    border: none;
+    border-bottom: 0.1px solid black;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color:black;
+    font-size: 16px;
 }
-.container
+
+.loginbox input[type="text"], input[type="email"]
 {
-    background:#fff;
-    border-radius: 10px;
-    box-shadow:15px 20px 0px rgba(0,0,0,0.1);
+    border: none;
+    border-bottom: 0.1px solid black;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: rgb(82, 78, 78);
+    font-size: 18px;
+
 }
-.carousel-inner
+.loginbox input[type="submit"]
 {
-    border-radius:0 10px 10px 0;
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #fb2525;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
 }
-.carousel-caption{
-    text-align:left;
-    left:5%;
-}
-.login-sec
+.loginbox input[type="submit"]:hover
 {
-    padding: 50px 30px;
-    position:relative;
+    cursor: pointer;
+    background: #ffc107;
+    color: rgb(153, 42, 42);
 }
-.login-sec .copy-text
-{
-    position:absolute; 
-    width:80%; 
-    bottom:20px; 
-    font-size:13px; 
-    text-align:center;
+.loginbox a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
 }
-.login-sec .copy-text i
+
+.loginbox a:hover
 {
-    color:#FEB58A;
+    color: #ffc107;
 }
-.login-sec .copy-text a
+
+.name
 {
-    color:#E36262;
+    font-size: 22px;
+    color: #fb2525;
 }
-.login-sec h2
+.web a
 {
-    margin-bottom:30px; 
-    font-weight:800; 
-    font-size:30px; 
-    color: #DE6262;
-}
-.login-sec h2:after
-{
-    content:" "; 
-    width:100px; 
-    height:5px; 
-    background:#FEB58A; 
-    display:block; 
-    margin-top:20px; 
-    border-radius:3px; 
-    margin-left:auto;
-    margin-right:auto
-}
-.btn-login
-{
-    background: #DE6262; 
-    color:#fff; 
-    font-weight:600;
-}
-.banner-text
-{
-    width:70%; 
-    position:absolute; 
-    bottom:40px; 
-    padding-left:20px;
-}
-.banner-text h2
-{
-    color:#fff; 
-    font-weight:600;
-}
-.banner-text h2:after
-{
-    content:" "; 
-    width:100px; 
-    height:5px; 
-    background:#FFF; 
-    display:block; 
-    margin-top:20px; 
-    border-radius:3px;
-}
-.banner-text p
-{
-    color:#fff;
+    font-size: 15px;
+    color: #fb2525;
 }

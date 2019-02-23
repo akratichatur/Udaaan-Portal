@@ -1,235 +1,263 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/static/styles/header.css" >
-    <link rel="stylesheet" href="/static/styles/footer.css" >
-    <title>Upload Attendance | Udaaan Portal</title>
-    <link rel="shortcut icon" href="/static/images/udaaan/1.jpg">
-  </head>
-  <body>
-    <% include header.html %>
-    <div class="container about">
-    <center><h2>Upload Attendance</h2></center>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">   
+<title>Upload Attendance | Udaaan Portal</title>
+<link rel="shortcut icon" href="/static/images/1.jpg">
 
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Custom styles for this template -->
+<link rel="stylesheet" href="/static/styles/footer.css" >
+<link rel="stylesheet" href="/static/styles/attendance.css" >
+</head>
+<body>
+
+
+<header>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-dark fixed-top bg-dark">
+<a class="navbar-brand" href="/app/user"><%= userdetails.name %></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarCollapse">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a class="nav-link" href="#">Rules & Regulations</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">Hierarchy</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">Event Calender</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">Update Details</a>
+</li>         
+<li class="nav-item">
+<a class="nav-link" href="#">Change Password</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/app/logout">Logout</a>
+</li>
+</ul>
+<!-- search bar -->
+<!-- <form class="form-inline mt-2 mt-md-0">
+<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>-->
+</div>
+</nav>
+</header>
+
+<!-- Begin page content -->
+<main role="main" class="container">
+<h1 class="mt-5">Upload Attendance</h1>
 
 <!--Year Wise Attendance-->
 <div class="panel-heading">
-    <ul class="nav nav-tabs">
-      <li><a href="#first" data-toggle="tab" class="btn btn-common"><h4>1st Year</h4> </a></li>
-      <li><a href="#second" data-toggle="tab" class="btn btn-common active show"><h4>2nd Year  </h4></a></li>
-      <li><a href="#third" data-toggle="tab" class="btn btn-common"><h4>3rd Year </h4></a></li>
-      <li><a href="#fourth" data-toggle="tab" class="btn btn-common"><h4>4th Year </h4></a></li>
-    </ul>
-  </div>
-
-
-
+<ul class="nav nav-tabs">
+<li><a href="#first" data-toggle="tab" class="btn btn-common"><h4>1st Year</h4> </a></li>
+<li><a href="#second" data-toggle="tab" class="btn btn-common active show"><h4>2nd Year  </h4></a></li>
+<li><a href="#third" data-toggle="tab" class="btn btn-common"><h4>3rd Year </h4></a></li>
+<li><a href="#fourth" data-toggle="tab" class="btn btn-common"><h4>4th Year </h4></a></li>
+</ul>
+</div>
 <div class="row">
 <div class="col-12">
-    <div class="panel-body">
-  <div class="tab-content" id="nav-tabContent">
+<div class="panel-body">
+<div class="tab-content" id="nav-tabContent">
 
 <!--1st year attendance-->
-    <div class="tab-pane fade show active" id="first">
-      <form method="post" action="/app/attend">
-        <table class="table table-striped table-sm">
-            <thead>
-              <tr>
-                <th><h5>select</h5></th>
-                <th><h5>Udaaan ID</h5></th>
-                <th><h5>Member</h5></th>
-                <th><h5>Course</h5></th>
-                <th><h5>Year</h5></th>
-                <th><h5>Attendance %age</h5></th>
-              </tr>
-            </thead>
-            <tbody>
-      
-                <% for(var i in firstlist) { %>
-                  
-              <tr>
-                <td>
-                    <div class="checkbox-inline">
-                    <label class="checkbox-inline"><input type="checkbox" style="width: 20px; height:20px;" name="p" value="<%= firstlist[i].udaaan_id %>" checked></label>
-                      </div>
-                  </td>
-                <th><%= firstlist[i].udaaan_id %></th>
-                <td><%= firstlist[i].name %></td>
-                <td><%= firstlist[i].course %></td>
-                <td><%= firstlist[i].year %></td>
-                <td></td>
-              </tr>
-      
-              <% } %>
-              
-            </tbody>
-          </table>
-          <br><center><input type="submit" value="Save Attendance" class="btn btn-primary"></center><br>
-    </form>              
-  </div>
+<div class="tab-pane fade show active" id="first">
+<form method="post" action="/app/attend">
+<table class="table table-striped table-sm">
+<thead>
+<tr>
+<th><h5>select</h5></th>
+<th><h5>Udaaan ID</h5></th>
+<th><h5>Member</h5></th>
+<th><h5>Course</h5></th>
+<th><h5>Year</h5></th>
+<th><h5>Attendance %age</h5></th>
+</tr>
+</thead>
+<tbody>
+<% for(var i in firstlist) { %>
+<tr>
+<td>
+<div class="checkbox-inline">
+<label class="checkbox-inline"><input type="checkbox" style="width: 20px; height:20px;" name="p" value="<%= firstlist[i].udaaan_id %>" checked></label>
+</div>
+</td>
+<th><%= firstlist[i].udaaan_id %></th>
+<td><%= firstlist[i].name %></td>
+<td><%= firstlist[i].course %></td>
+<td><%= firstlist[i].year %></td>
+<td></td>
+</tr>
+<% } %>
+</tbody>
+</table>
+<br><center><input type="submit" value="Save Attendance" class="btn btn-primary"></center><br>
+</form>              
+</div>
 
 <!--2nd year attendance-->
-  <div class="tab-pane fade" id="second">
-    <form method="post" action="/app/attend">
-      <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th><h5>select</h5></th>
-              <th><h5>Udaaan ID</h5></th>
-              <th><h5>Member</h5></th>
-              <th><h5>Course</h5></th>
-              <th><h5>Year</h5></th>
-              <th><h5>Attendance %age</h5></th>
-            </tr>
-          </thead>
-          <tbody>
-    
-              <% for(var i in secondlist) { %>
-                
-            <tr>
-              <td>
-                  <div class="checkbox-inline">
-                  <label class="checkbox-inline"><input type="checkbox" style="width: 20px; height:20px;" name="p" value="<%= secondlist[i].udaaan_id %>" checked></label>
-                    </div>
-                </td>
-              <th><%= secondlist[i].udaaan_id %></th>
-              <td><%= secondlist[i].name %></td>
-              <td><%= secondlist[i].course %></td>
-              <td><%= secondlist[i].year %></td>
-              <td></td>
-            </tr>
-    
-            <% } %>
-            
-          </tbody>
-        </table>
-        <br><center><input type="submit" value="Save Attendance" class="btn btn-primary"></center><br>
-  </form> 
-    </div>
+<div class="tab-pane fade" id="second">
+<form method="post" action="/app/attend">
+<table class="table table-striped table-sm">
+<thead>
+<tr>
+<th><h5>select</h5></th>
+<th><h5>Udaaan ID</h5></th>
+<th><h5>Member</h5></th>
+<th><h5>Course</h5></th>
+<th><h5>Year</h5></th>
+<th><h5>Attendance %age</h5></th>
+</tr>
+</thead>
+<tbody>
+<% for(var i in secondlist) { %>
+<tr>
+<td>
+<div class="checkbox-inline">
+<label class="checkbox-inline"><input type="checkbox" style="width: 20px; height:20px;" name="p" value="<%= secondlist[i].udaaan_id %>" checked></label>
+</div>
+</td>
+<th><%= secondlist[i].udaaan_id %></th>
+<td><%= secondlist[i].name %></td>
+<td><%= secondlist[i].course %></td>
+<td><%= secondlist[i].year %></td>
+<td></td>
+</tr>
+<% } %>
+</tbody>
+</table>
+<br><center><input type="submit" value="Save Attendance" class="btn btn-primary"></center><br>
+</form> 
+</div>
 
 <!--3rd year attendance-->
-  <div class="tab-pane fade" id="third">
-    
-  <form method="post" action="/app/attend">
-      <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th><h5>select</h5></th>
-              <th><h5>Udaaan ID</h5></th>
-              <th><h5>Member</h5></th>
-              <th><h5>Course</h5></th>
-              <th><h5>Year</h5></th>
-              <th><h5>Attendance %age</h5></th>
-            </tr>
-          </thead>
-          <tbody>
-    
-              <% for(var i in thirdlist) { %>
-                
-            <tr>
-              <td>
-                  <div class="checkbox-inline">
-                  <label class="checkbox-inline"><input type="checkbox" style="width: 20px; height:20px;" name="p" value="<%= thirdlist[i].udaaan_id %>" checked></label>
-                    </div>
-                </td>
-              <th><%= thirdlist[i].udaaan_id %></th>
-              <td><%= thirdlist[i].name %></td>
-              <td><%= thirdlist[i].course %></td>
-              <td><%= thirdlist[i].year %></td>
-              <td></td>
-            </tr>
-    
-            <% } %>
-            
-          </tbody>
-        </table>
-        <br><center><input type="submit" value="Save Attendance" class="btn btn-primary"></center><br>
-  </form>
+<div class="tab-pane fade" id="third">
+<form method="post" action="/app/attend">
+<table class="table table-striped table-sm">
+<thead>
+<tr>
+<th><h5>select</h5></th>
+<th><h5>Udaaan ID</h5></th>
+<th><h5>Member</h5></th>
+<th><h5>Course</h5></th>
+<th><h5>Year</h5></th>
+<th><h5>Attendance %age</h5></th>
+</tr>
+</thead>
+<tbody>
+<% for(var i in thirdlist) { %>
+<tr>
+<td>
+<div class="checkbox-inline">
+<label class="checkbox-inline"><input type="checkbox" style="width: 20px; height:20px;" name="p" value="<%= thirdlist[i].udaaan_id %>" checked></label>
+</div>
+</td>
+<th><%= thirdlist[i].udaaan_id %></th>
+<td><%= thirdlist[i].name %></td>
+<td><%= thirdlist[i].course %></td>
+<td><%= thirdlist[i].year %></td>
+<td></td>
+</tr>
+<% } %>
+</tbody>
+</table>
+<br><center><input type="submit" value="Save Attendance" class="btn btn-primary"></center><br>
+</form>
 </div>
 
-  <!--4th year attendance-->
-  <div class="tab-pane fade" id="fourth">
-     
-    <form method="post" action="/app/attend">
-      <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th><h5>select</h5></th>
-              <th><h5>Udaaan ID</h5></th>
-              <th><h5>Member</h5></th>
-              <th><h5>Course</h5></th>
-              <th><h5>Year</h5></th>
-              <th><h5>Attendance %age</h5></th>
-            </tr>
-          </thead>
-          <tbody>
-    
-              <% for(var i in fourthlist) { %>
-                
-            <tr>
-              <td>
-                  <div class="checkbox-inline">
-                  <label class="checkbox-inline"><input type="checkbox" style="width: 20px; height:20px;" name="p" value="<%= fourthlist[i].udaaan_id %>" checked></label>
-                    </div>
-                </td>
-              <th><%= fourthlist[i].udaaan_id %></th>
-              <td><%= fourthlist[i].name %></td>
-              <td><%= fourthlist[i].course %></td>
-              <td><%= fourthlist[i].year %></td>
-              <td></td>
-            </tr>
-    
-            <% } %>
-            
-          </tbody>
-        </table>
-        <br><center><input type="submit" value="Save Attendance" class="btn btn-primary"></center><br>
-  </form>
-  </div>
+<!--4th year attendance-->
+<div class="tab-pane fade" id="fourth">
+<form method="post" action="/app/attend">
+<table class="table table-striped table-sm">
+<thead>
+<tr>
+<th><h5>select</h5></th>
+<th><h5>Udaaan ID</h5></th>
+<th><h5>Member</h5></th>
+<th><h5>Course</h5></th>
+<th><h5>Year</h5></th>
+<th><h5>Attendance %age</h5></th>
+</tr>
+</thead>
+<tbody>
+<% for(var i in fourthlist) { %>
+<tr>
+<td>
+<div class="checkbox-inline">
+<label class="checkbox-inline"><input type="checkbox" style="width: 20px; height:20px;" name="p" value="<%= fourthlist[i].udaaan_id %>" checked></label>
+</div>
+</td>
+<th><%= fourthlist[i].udaaan_id %></th>
+<td><%= fourthlist[i].name %></td>
+<td><%= fourthlist[i].course %></td>
+<td><%= fourthlist[i].year %></td>
+<td></td>
+</tr>
+<% } %>
+</tbody>
+</table>
+<br><center><input type="submit" value="Save Attendance" class="btn btn-primary"></center><br>
+</form>
 </div>
 </div>
 </div>
 </div>
+</div>
+</main>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<span class="text-muted">&copy;All Rights Reserved<br>Designed by <a href="http://www.udaaan.org/" target="_blank">UdaaanAasmaTak</a></span>
+<ul class="social_footer_ul" type="none">
+<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+<li><a href="#"><i class="fa fa-envelope-o"></i></a></li>
+<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+</ul>
+</div>
+</footer>
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 <!--3rd year attendance script-->
-   <!-- <script>
-        console.log("3rd yr");
+<!-- <script>
+console.log("3rd yr");
 
-        var third=document.getElementById("third");
-        third.form.addEventListener('submit',function(e)
-        {
-          e.preventDefault();
-          
-          console.log(third.checked);
-          if (third.checked==true)
-          { 
-            console.log(third.name);         
-            alert("Successfully uploaded");
-          }
-          
-        },false);
-        
-        </script>
-        -->
-  
-  
-  
-  
-  </div>
-  
-  </body>
- 
+var third=document.getElementById("third");
+third.form.addEventListener('submit',function(e)
+{
+e.preventDefault();
+
+console.log(third.checked);
+if (third.checked==true)
+{ 
+console.log(third.name);         
+alert("Successfully uploaded");
+}
+
+},false);
+
+</script>
+-->
+
+</body>
 </html>

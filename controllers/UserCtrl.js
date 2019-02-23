@@ -2,9 +2,12 @@ var sessionUtils = require('../utils/sessionUtils');
 var util=require('util');
 var databaseUtils = require('./../utils/databaseUtils');
 
+
 module.exports = {
     showUserPage: function* (next) {
 
+        var sessionId = this.cookies.get("SESSION_ID");
+        console.log(sessionId);
         var current = this.currentUser.udaaan_id;
         var userdetailstr = 'select * from member where udaaan_id="%s"';
         var userdetailquery = util.format(userdetailstr,current);
@@ -80,11 +83,12 @@ module.exports = {
 
     logout: function* (next) {
         var sessionId = this.cookies.get("SESSION_ID");
+        console.log(sessionId);
         if(sessionId) {
             sessionUtils.deleteSession(sessionId);
         }
         this.cookies.set("SESSION_ID", '', {expires: new Date(1), path: '/'});
 
-        this.redirect('/');
+        this.redirect('/app/login');
     }
 }

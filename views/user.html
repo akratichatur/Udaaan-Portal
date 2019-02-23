@@ -1,281 +1,188 @@
-<!DOCTYPE HTML>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>UserPage | Udaaan Portal</title>
-<link rel="shortcut icon" href="/static/images/udaaan/1.jpg">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Udaaan Portal" />
-<meta name="keywords" content="Udaaan Aasma Tak Portal, Udaaan Portal , udaan portal, GLAU, NGO Portal,udaaanaasmatak,udaaan" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">   
+<title>UserPage|Udaaan Portal</title>
+<link rel="shortcut icon" href="/static/images/1.jpg">
 
-<link href="https://fonts.googleapis.com/css?family=Josefin+Slab:400,600,700" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
-<link rel="stylesheet" href="/static/styles/userpage/animate.css" type="text/css" />
-<link rel="stylesheet" href="/static/styles/userpage/icomoon.css" type="text/css" />
-<link rel="stylesheet" href="/static/styles/userpage/bootstrap.css" type="text/css" />
-<link rel="stylesheet" href="/static/styles/userpage/magnific-popup.css" type="text/css" />
-<link rel="stylesheet" href="/static/styles/userpage/flexslider.css" type="text/css" />
-<link rel="stylesheet" href="/static/styles/userpage/style.css" type="text/css" />
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!-- Custom styles for this template -->
+<link rel="stylesheet" href="/static/styles/footer.css" >
+<link rel="stylesheet" href="/static/styles/user.css" >
 </head>
+
 <body>
 
-<div class="fh5co-loader"></div>
-
-<div id="page">
-<nav class="fh5co-nav" role="navigation">
-<div class="container-fluid">
-<div class="row">
-<div class="top-menu">
-<div class="container">
-<div class="row">
-<div class="col-sm-7 text-left menu-1">
-<h2><%= userdetails.name %></h2>
-</div>
-<br>
-<div class="col-sm-7 text-left menu-1">
-<h2><% if(userdetails.responsibility=="Attendance") { %>
-      <button><a href="/app/attendance">Upload Attendance</a></button>
-<% } %></h2>
-</div>
-
-<div id="fh5co-offcanvas">
-<ul>
-<li><a href="#">Other Members Details </a></li><br>
-<li><a href="#">All Students Details </a></li><br>
-<li><a href="#">Responsibilities (respective dept.)</a></li><br>
-<li><a href="#">Rules & Regulations</a></li><br>
-<li><a href="#">Hierarchy</a> </li><br>
-<li><a href="#">Event Calender</a></li><br>
-<li><a href="#">Update Details</a></li><br>
-<li><a href="#">Change Password</a></li>
+<header>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-dark fixed-top bg-dark">
+<a class="navbar-brand" href="#"><%= userdetails.name %></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarCollapse">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a class="nav-link" href="#">Rules & Regulations</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">Hierarchy</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">Event Calender</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">Update Details</a>
+</li>         
+<li class="nav-item">
+<a class="nav-link" href="#">Change Password</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/app/logout">Logout</a>
+</li>
 </ul>
-
-</div>
-
-</div>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-xs-12 text-center menu-2">
-<!--<div id="fh5co-logo">  -->
-<h1>
-
-<img src='<%= userdetails.photo %>' alt='photo'>
-<small><%= userdetails.udaaan_id %></small>
-
-</h1>
-<!-- </div> -->
-</div>
+<!-- search bar -->
+<!-- <form class="form-inline mt-2 mt-md-0">
+<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>-->
 </div>
 </nav>
+</header>
 
-<div id="fh5co-content">
-<div class="container">
+<!-- Begin page content -->
+<main role="main" class="container">
 <div class="row">
-<div class="col-md-9 col-padded-right">
-<div class="row">
-<div class="col-md-12">
-<div class="fh5co-blog animate-box">
-<div class="title title-pin text-center">
-<h3>Your Attendance</h3>
-<span class="category">Udaaan Aasma Tak</span>
+<div class="col-lg-4 col-md-4 col-sm-4">
+<h1 class="mt-5"><img src='<%= userdetails.photo %>' alt='photo'></h1>
 </div>
 
-
-
-
-<div class="blog-text text-center">
-</div>
-</div>
-</div>
-</div>
+<div class="col-lg-4 col-md-4 col-sm-4">
+<% if(userdetails.responsibility=="Attendance") { %>
+<button><a class="nav-link active" href="/app/attendance">Upload Attendance</a></button>
+<% } %>
 </div>
 
-<!--Teaching days & updates-->
-<aside id="sidebar">
-<div class="col-md-3">
-<div class="side animate-box">
+<div class="col-lg-4 col-md-4 col-sm-4">
+<button><a class="nav-link active" href="#">Chatting</a></button>
+</div>
+</div>   
+
+<!-- Updates-->
 <div class="col-md-12 col-md-offset-0 text-center fh5co-heading fh5co-heading-sidebar">
 <h2><span>Updates</span></h2>
 </div>
 <div class="fh5co-staff">
-        <ul class="category">
-        <% for(var i in updatelist) { %>
-         <li><i class="icon-check"></i>
-         <%= updatelist[i].update_title %>
-        </li>
-         <% } %>
-        </ul>
-</div>
+<ul class="category">
+<% for(var i in updatelist) { %>
+<li><i class="icon-check"></i>
+<%= updatelist[i].update_title %>
+</li>
+<% } %>
+</ul>
 </div>
 
-<div class="side animate-box">
+<!-- User working days -->
 <div class="col-md-12 col-md-offset-0 text-center fh5co-heading fh5co-heading-sidebar">
 <h2><span>Your Days</span></h2>
 </div>
 <ul class="category">
-
 <% var teach = teachingdetails.teaching_days %>
 <% var splits = teach.split(","); %>
 <%   for (var i=0;i<splits.length;i++)  {%>
 <li><i class="icon-check"></i>
-     <%= splits[i] %>
+<%= splits[i] %>
 </li>
 <% } %>
-
 </ul>
-</div>
 
-</div>
-</aside>
-
-</div>
-</div>
-</div>
-
-<!--Teaching's members-->
-<div id="fh5co-instagram">
-<div class="container">
-<div class="row animate-box">
+<!-- Members For Today's Class -->
 <div class="col-md-12 col-md-offset-0 text-center fh5co-heading">
 <h2><span>Members For Today's Class</span></h2>
 <br>
-<div class="row">
-        <div class="col-md-4">
-                <h3>MEMBER</h3><br>
-                <% for(var i in memberlist) { %>
-                <%= memberlist[i].name %><br>
-                <% } %>
-        </div>
-        <div class="col-md-4">
-                <h3>YEAR</h3><br>
-                <% for(var i in memberlist) { %>
-                <%= memberlist[i].year %><br>
-                <% } %>
-        </div>
-        <div class="col-md-4">
-                <h3>COURSE</h3><br>
-                <% for(var i in memberlist) { %>
-                <%= memberlist[i].course %><br>
-                <% } %>
-        </div>
-</div>
-</div>
-</div>
-</div>
+<table class="table table-striped table-sm">
+<thead>
+<tr>
+<th><h5>MEMBER</h5></th>
+<th><h5>YEAR</h5></th>
+<th><h5>COURSE</h5></th>
+</tr>
+</thead>
+<tbody>
+<% for(var i in memberlist) { %>
+<tr>
+<th><%= memberlist[i].name %></th>
+<td><%= memberlist[i].year %></td>
+<td><%= memberlist[i].course %></td>
+</tr>
+<% } %>
+</tbody>
+</table>
 </div>
 
-<!--Transportation's Member-->
-<div id="fh5co-instagram">
-        <div class="container">
-        <div class="row animate-box">
-        <div class="col-md-12 col-md-offset-0 text-center fh5co-heading">
-        <h2><span>Members For Today's Transportation</span></h2>
+<!-- Members For Today's Transportation-->
+<div class="col-md-12 col-md-offset-0 text-center fh5co-heading">
+<h2><span>Members For Today's Transportation</span></h2>
 <br>
-        <div class="row">                            <!-- To take Students -->
-                <div class="col-md-3 col-sm-3">
-                      <h3>MEMBER</h3><br>
-                      <% for(var i in transportlist1) { %>
-                        <%= transportlist1[i].name %><br>
-                        <% } %>
-                </div>
-                <div class="col-md-2 col-sm-2">
-                      <h3>YEAR</h3><br>
-                      <% for(var i in transportlist1) { %>
-                        <%= transportlist1[i].year %><br>
-                        <% } %>
-                </div>
-                <div class="col-md-2 col-sm-2">
-                        <h3>COURSE</h3><br>
-                        <% for(var i in transportlist1) { %>
-                        <%= transportlist1[i].course %><br>
-                        <% } %>
-                </div>
-                <div class="col-md-2 col-sm-2">
-                        <h3>CONTACT</h3><br>
-                        <% for(var i in transportlist1) { %>
-                        <%= transportlist1[i].contact_no %><br>
-                        <% } %>
-                </div>
-                <div class="col-md-3 col-sm-3">
-                        <h3>Duty</h3><br>
-                        <% for(var i in transportlist1) { %>
-                        To Take Students<br>
-                        <% } %>
-                </div>
-        </div>
-        <div class="row">                            <!-- To take Students -->
-                <div class="col-md-3 col-sm-3">
-                      <% for(var i in transportlist2) { %>
-                        <%= transportlist2[i].name %><br>
-                        <% } %>
-                </div>
-                <div class="col-md-2 col-sm-2">
-                      <% for(var i in transportlist2) { %>
-                        <%= transportlist2[i].year %><br>
-                        <% } %>
-                </div>
-                <div class="col-md-2 col-sm-2">
-                        <% for(var i in transportlist2) { %>
-                        <%= transportlist2[i].course %><br>
-                        <% } %>
-                </div>
-                <div class="col-md-2 col-sm-2">
-                        <% for(var i in transportlist2) { %>
-                        <%= transportlist2[i].contact_no %><br>
-                        <% } %>
-                </div>
-                <div class="col-md-3 col-sm-3">
-                        <% for(var i in transportlist2) { %>
-                        To Leave Students<br>
-                        <% } %>
-                </div>
-        </div>
+<!-- To take Students -->
+<table class="table table-striped table-sm">
+<thead>
+<tr>
+<th><h5>MEMBER</h5></th>
+<th><h5>YEAR</h5></th>
+<th><h5>COURSE</h5></th>
+<th><h5>CONTACT</h5></th>
+<th><h5>DUTY</h5></th>
+</tr>
+</thead>
+<tbody>
+<% for(var i in transportlist1) { %>
+<tr>
+<th><%= transportlist1[i].name %></th>
+<th><%= transportlist1[i].year %></th>
+<th><%= transportlist1[i].course %></th>
+<th><%= transportlist1[i].contact_no %></th>
+<th>To Take Students</th>
+</tr>
+<% } %>
+</tbody>
+<!-- To leave Students -->
+<tbody>
+<% for(var i in transportlist2) { %>
+<tr>
+<th><%= transportlist2[i].name %></th>
+<th><%= transportlist2[i].year %></th>
+<th><%= transportlist2[i].course %></th>
+<th><%= transportlist2[i].contact_no %></th>
+<th>To Leave Students</th>
+</tr>
+<% } %>
+</tbody>
+</table>
+</main>
 
-        </div>
-        </div>
-        </div>
-        </div>
-
-
-<!--Footer-->
-<footer id="fh5co-footer" role="contentinfo">
+<!-- Footer -->
+<footer class="footer">
 <div class="container">
-<div class="row copyright">
-<div class="col-md-12 text-center">
-<p>
-<small class="block">&copy;All Rights Reserved.</small>
-<small class="block">Designed by <a href="http://www.udaaan.org/" target="_blank">UdaaanAasmaTak</a></small>
-</p>
-<p>
-<ul class="fh5co-social-icons">
-<li><a href="#"><i class="icon-twitter"></i></a></li>
-<li><a href="#"><i class="icon-facebook"></i></a></li>
-<li><a href="#"><i class="icon-linkedin"></i></a></li>
-<li><a href="#"><i class="icon-dribbble"></i></a></li>
+<span class="text-muted">&copy;All Rights Reserved<br>Designed by <a href="http://www.udaaan.org/" target="_blank">UdaaanAasmaTak</a></span>
+<ul class="social_footer_ul" type="none">
+<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+<li><a href="#"><i class="fa fa-envelope-o"></i></a></li>
+<li><a href="#"><i class="fa fa-instagram"></i></a></li>
 </ul>
-</p>
-</div>
-</div>
-
 </div>
 </footer>
-</div>
 
-<div class="gototop js-top">
-<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-</div>
-<script src="/static/scripts/js/jquery.min.js"></script>
-<script src="/static/scripts/js/jquery.easing.1.3.js"></script>
-<script src="/static/scripts/js/bootstrap.min.js"></script>
-<script src="/static/scripts/js/jquery.waypoints.min.js"></script>
-<script src="/static/scripts/js/jquery.flexslider-min.js"></script>
-<script src="/static/scripts/js/jquery.magnific-popup.min.js"></script>
-<script src="/static/scripts/js/magnific-popup-options.js"></script>
-<script src="/static/scripts/js/main.js"></script>
-<script src="/static/scripts/js/modernizr-2.6.2.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>

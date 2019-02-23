@@ -2,40 +2,52 @@ var sessionUtils = require('../utils/sessionUtils');
 var util=require('util');
 var databaseUtils = require('./../utils/databaseUtils');
 
+
 module.exports = {
     showAttendPage: function* (next) {
 
         var p = this.request.body.p;
-        console.log(p);
+        var dt = new Date().getDate();
+        var column_name="d"+dt;
+        console.log(column_name);
 
-        var dt = new Date();
-        console.log(dt.getFullYear() + "/" + (dt.getMonth() + 1) + "/" + dt.getDate());
-
-        var val='/app/attendance';
-        this.redirect(val);
-       
-
-        //this.redirect('/app/attendance');
-        //console.log("**********");
-        //console.log(p.length);
-
-       /* if (typeof p==typeof 'string')
+        if (typeof p==typeof 'string')
         {
             console.log(p);
+            var queryString='update attendance set '+column_name+' ="1" where udaaan_id="%s" ';
+            var query=util.format(queryString,p);
+            var result=yield databaseUtils.executeQuery(query);
+            
         }
 
         else
         {
-            console.log(p.length);
+            //alert(p.length+" members are present");
             for(var i=0;i<p.length;i++)
-            console.log(p[i]);
+            {
+                console.log(p[i]);
+                var queryString='update attendance set '+column_name+' ="1" where udaaan_id="%s" ';
+                var query=util.format(queryString,p[i]);
+                var result=yield databaseUtils.executeQuery(query);
+            }
+            
+
         }
-*/
+
+        var val='/app/attendance';
+        this.redirect(val);
+       
  
 
 },
 
     showAttendancePage: function* (next) {
+
+        var current = this.currentUser.udaaan_id;
+        var userdetailstr = 'select * from member where udaaan_id="%s"';
+        var userdetailquery = util.format(userdetailstr,current);
+        var userdetailresult = yield databaseUtils.executeQuery(userdetailquery);
+        var userdetails = userdetailresult[0];
 
         var firststr = 'select * from member where year="1"';
         var firstresult = yield databaseUtils.executeQuery(firststr);
@@ -51,6 +63,9 @@ module.exports = {
         
         yield this.render('attendance',{
 
+            userdetails:userdetails,
+            currentlist:userdetailresult,
+            
             firstresult:firstresult,
             firstlist:firstresult,
 
@@ -66,17 +81,5 @@ module.exports = {
        
         });
     },
-
-   
-
-    logout: function* (next) {
-        var sessionId = this.cookies.get("SESSION_ID");
-        if(sessionId) {
-            sessionUtils.deleteSession(sessionId);
-        }
-        this.cookies.set("SESSION_ID", '', {expires: new Date(1), path: '/'});
-
-        this.redirect('/');
-    }
        
 }

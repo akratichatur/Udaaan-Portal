@@ -198,4 +198,13 @@ insert into attendance(udaaan_id) values
 ('udaaan160006'),
 ('udaaan160007'),
 ('udaaan160008'),
-('udaaan160009');
+('udaaan160009'),
+('udaaan160010'),
+('udaaan160011'),
+('udaaan160012'),
+('udaaan160013'),
+('udaaan160014'),
+('udaaan160015'),
+('udaaan160016'),
+('udaaan160017'),
+('udaaan160018');
