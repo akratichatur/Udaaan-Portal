@@ -1,10 +1,9 @@
 var app = require('koa')();
+var socket = require('socket.io');
 
 var cors = require('koa-cors');
 var mount = require('koa-mount');
 var util = require('util');
-
-
 
 var render = require('co-ejs');
 var path = require('path');
@@ -29,7 +28,6 @@ app.use(function* (next) {
 
     var sessionId = this.cookies.get("SESSION_ID");
     this.currentUser = yield sessionUtils.getCurrentUser(sessionId);
-
     var queryString, query, result;
 
     var locals = {
@@ -60,6 +58,11 @@ app.use(function* (next) {
         err.url = this.request.url;
         logger.logError(err);
         this.status = err.status || 500;
+        var val='/app/error500';
+        this.redirect(val);
+        this.app.emit('error', err, this);
+
+
         this.body = {'error': 'Some error occured'};
         this.app.emit('error', err, this);
     }
@@ -70,6 +73,37 @@ app.use(mount('/app', require('./routes/appRoutes')(app)));
 var serve = require('koa-static');
 app.use(serve('static'));
 
-module.exports = app;
 
+
+//Chat Box
+var server = app.listen(3000, function(){
+    console.log('listening for requests on port 3000,');
+});
+
+
+// Socket setup & pass server
+var io = socket(server);
+io.on('connection', (socket) => {
+    console.log('made socket connection', socket.id);
+
+    socket.on('load',function(data){
+        data=socket.id;
+         io.sockets.emit('load', data);
+    });
+
+    // Handle chat event
+    socket.on('chat', function(data){
+        data.handle=socket.id;
+        io.sockets.emit('chat', data);
+    });
+
+    // Handle typing event
+    socket.on('typing', function(data){
+        data=socket.id;
+        socket.broadcast.emit('typing', data);
+    });
+
+});
+
+module.exports = app;
 require('./clusterify')(app);

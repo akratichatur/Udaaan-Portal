@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>ChatPage|Udaaan Portal</title>
+  <link rel="shortcut icon" href="/static/images/1.jpg">
+  <link rel="stylesheet" href="/static/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="/static/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="/static/vendors/css/vendor.bundle.addons.css">
+  <link rel="stylesheet" href="/static/styles/user.css">
+  <link rel="shortcut icon" href="images/favicon.png" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+  <link href="/static/styles/chat.css" rel="stylesheet" />
+</head>
+
+<body>
+<div class="container-scroller">
+<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+<a class="navbar-brand brand-logo" href="/app/user">
+<img src="/static/images/7.png" alt="logo" />
+</a>
+<a class="navbar-brand brand-logo-mini" href="/app/user">
+<img src="/static/images/1.jpg" alt="logo" />
+</a>
+</div>
+<div class="navbar-menu-wrapper d-flex align-items-center">
+<ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+<li class="nav-item">
+<% if(userdetails.responsibility=="Attendance") { %>
+<a href="/app/attendance" class="nav-link">
+<i class="mdi mdi-bookmark-plus-outline"></i>Upload Attendance</a>
+<% } %>
+</li>
+</ul>
+<ul class="navbar-nav navbar-nav-right">
+<li class="nav-item dropdown d-none d-xl-inline-block">
+<a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+<span class="profile-text">Hello, <%= userdetails.name %></span>
+<img class="img-xs rounded-circle" src="<%= userdetails.photo %>" alt="Profile image">
+</a>
+<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+<a class="dropdown-item" href="#">
+Change Password
+</a>
+<a class="dropdown-item" href="/app/logout">
+Sign Out
+</a>
+</div>
+</li>
+</ul>
+<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+<span class="mdi mdi-menu"></span>
+</button>
+</div>
+</nav>
+<div class="container-fluid page-body-wrapper">
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+<ul class="nav">
+<li class="nav-item nav-profile">
+<div class="nav-link">
+<div class="user-wrapper">
+<div class="profile-image">
+<img src="<%= userdetails.photo %>" alt="profile image">
+</div>
+<div class="text-wrapper">
+<p class="profile-name"><%= userdetails.name %></p>
+<div>
+<small class="designation text-muted">Volunteer</small>
+<span class="status-indicator online"></span>
+</div>
+</div>
+</div>
+
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/app/user">
+<i class="menu-icon mdi mdi-television"></i>
+<span class="menu-title">Dashboard</span>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-toggle="collapse" href="#" aria-expanded="false" aria-controls="ui-basic">
+<i class="menu-icon mdi mdi-content-copy"></i>
+<span class="menu-title">View Details</span>
+<i class="menu-arrow"></i>
+</a>
+<div class="collapse" id="ui-basic">
+<ul class="nav flex-column sub-menu">
+<li class="nav-item">
+<a class="nav-link" href="#">GLA Unit Volunteers</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">GLA Unit Students</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">GLA Unit Alumini</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">
+<i class="menu-icon mdi mdi-backup-restore"></i>
+<span class="menu-title">Events Update</span>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/app/hierarchy">
+<i class="menu-icon mdi mdi-chart-line"></i>
+<span class="menu-title">Hierarchy</span>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">
+<i class="menu-icon mdi mdi-table"></i>
+<span class="menu-title">Event Calender</span>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/app/rules">
+<i class="menu-icon mdi mdi-sticker"></i>
+<span class="menu-title">Rules & Regulations</span>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">
+<i class="menu-icon mdi mdi-sticker"></i>
+<span class="menu-title">Update Details</span>
+</a>
+</li>
+</ul>
+</nav>
+
+<!--Chat window-->
+<div id="mario-chat">
+<h2>Udaaan Family Chat</h2>
+<div id="chat-window">
+<div id="output"></div>
+<div id="feedback"></div>
+</div>
+<input id="handle" type="hidden" placeholder="Handle" />
+<input id="username" type="hidden" placeholder="username" value="<%= userdetails.name %>"/>
+<input id="message" type="text" placeholder="Message" />
+<button id="send">Send</button>
+</div>
+<!-- end Chat window-->
+</div>
+  </div>
+  <script src="/static/vendors/js/vendor.bundle.base.js"></script>
+  <script src="/static/vendors/js/vendor.bundle.addons.js"></script>
+  <script src="/static/scripts/js/off-canvas.js"></script>
+  <script src="/static/scripts/js/misc.js"></script>
+  <script src="/static/scripts/js/dashboard.js"></script>
+  <script src="/static/scripts/chat.js"></script>s
+</body>
+</html>

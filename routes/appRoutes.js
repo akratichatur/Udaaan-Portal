@@ -14,15 +14,28 @@ module.exports = function(app){
     router.post('/signin', loginCtrl.verifyLoginPage);
     router.post('/verify', loginCtrl.verify);
     router.post('/verifypassword', loginCtrl.verifyPassword);
+    router.get('/error404', loginCtrl.showError404Page);
+    router.get('/error500', loginCtrl.showError500Page);
 
     var userCtrl = require('./../controllers/UserCtrl');
     router.get('/user',userCtrl.showUserPage);
+    router.get('/rules',userCtrl.showRulesPage);
+    router.get('/hierarchy',userCtrl.showHierarchyPage);
     router.get('/logout', userCtrl.logout);
 
     var attendanceCtrl = require('./../controllers/AttendanceCtrl');
     router.get('/attendance',attendanceCtrl.showAttendancePage);
     router.post('/attend',attendanceCtrl.showAttendPage);
     
+    var chatCtrl = require('./../controllers/ChatCtrl');
+    router.get('/chat',chatCtrl.showChatPage);
+
+    
+    var updateCtrl = require('./../controllers/UpdateCtrl');
+    router.get('/update',updateCtrl.showUpdatePage);
+    router.post('/update',updateCtrl.modifyPage);
+    router.get('/update/:id',updateCtrl.modifyPage);
+
 
    // var updateCtrl = require('./../controllers/UpdateCtrl');
    // router.post('/updateDetails', updateCtrl.resumePage);
