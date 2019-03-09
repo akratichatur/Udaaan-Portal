@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>HierarchyPage|Udaaan Portal</title>
+  <title>VolunteerPage|Udaaan Portal</title>
   <link rel="shortcut icon" href="/static/images/1.jpg">
   <!-- plugins:css -->
   <link rel="stylesheet" href="/static/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
@@ -102,17 +102,17 @@
                   <i class="menu-arrow"></i>
                   </a>
                   <div class="collapse" id="ui-basic">
-                      <ul class="nav flex-column sub-menu">
-                          <li class="nav-item">
-                          <a class="nav-link" href="/app/Volunteers">GLA Unit Volunteers</a>
-                          </li>
-                          <li class="nav-item">
-                          <a class="nav-link" href="/app/students">GLA Unit Students</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="/app/alumini">GLA Unit Alumini</a>
-                            </li>
-                          </ul>
+                  <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                  <a class="nav-link" href="/app/Volunteers">GLA Unit Volunteers</a>
+                  </li>
+                  <li class="nav-item">
+                  <a class="nav-link" href="/app/students">GLA Unit Students</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/app/alumini">GLA Unit Alumini</a>
+                    </li>
+                  </ul>
                   </div>
                   </li>
                 <li class="nav-item">
@@ -149,17 +149,52 @@
             </nav>
       <div class="main-panel">
         <div class="content-wrapper">
-         
-<img src="/static/images/Hierarchy.jpeg" class="card-img" alt="UDAAAN AASMA TAK">
+                <div class="row">
+                        <div class="panel-heading">
+                                <ul class="nav nav-tabs">
+                                <li><a href="#first" data-toggle="tab" class="btn btn-common"><h4>1st Year</h4> </a></li>
+                                <li><a href="#second" data-toggle="tab" class="btn btn-common active show"><h4>2nd Year  </h4></a></li>
+                                <li><a href="#third" data-toggle="tab" class="btn btn-common"><h4>3rd Year </h4></a></li>
+                                <li><a href="#fourth" data-toggle="tab" class="btn btn-common"><h4>4th Year </h4></a></li>
+                                </ul>
+                        </div>
+                        </div>
+            <div class="row">
+                    <% for(var i in volunteerlist) { %>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 grid-margin stretch-card">
+                    <div class="card card-statistics">
+                      <div class="card-body">
+                        <div class="clearfix">
+                          <div class="float-left">
+                            <i class="mdi mdi-account-location text-info icon-lg"></i>
+                          </div>
+                          <div class="float-right">
+                            <p class="mb-0 text-right"><%= volunteerlist[i].udaaan_id %></p><br>
+                            <div class="fluid-container">
+                              <h4 class="font-weight-medium text-right mb-0"><%= volunteerlist[i].name %></h3>
+                            </div>
+                            <div class="fluid-container">
+                                    <p class="mb-0 text-right"><%= volunteerlist[i].name %></p>
+                              </div>
+                              <div class="fluid-container">
+                                    <p class="mb-0 text-right"><%= volunteerlist[i].name %></p>
+                              </div>
+                          </div>
+                        </div>
+                        <p class="text-muted mt-3 mb-0">
+                          <i class="mdi mdi-reload mr-1" aria-hidden="true"></i>GLA Unit
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <% } %>
+                </div>
 
         </div>
         <!-- content-wrapper ends -->
-     
         <!-- partial -->
       </div>
-      
    </div>
-   
   </div>
         <script src="/static/vendors/js/vendor.bundle.base.js"></script>
   <script src="/static/vendors/js/vendor.bundle.addons.js"></script>

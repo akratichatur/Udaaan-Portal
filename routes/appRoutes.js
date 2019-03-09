@@ -21,6 +21,8 @@ module.exports = function(app){
     router.get('/user',userCtrl.showUserPage);
     router.get('/rules',userCtrl.showRulesPage);
     router.get('/hierarchy',userCtrl.showHierarchyPage);
+    router.get('/students',userCtrl.showStudentsPage);
+    router.get('/volunteers',userCtrl.showVolunteersPage);
     router.get('/logout', userCtrl.logout);
 
     var attendanceCtrl = require('./../controllers/AttendanceCtrl');

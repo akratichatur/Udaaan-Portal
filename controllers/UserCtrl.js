@@ -109,6 +109,54 @@ module.exports = {
     },
 
 
+    showStudentsPage: function* (next) {
+
+        var current = this.currentUser.university_id;
+        var userdetailstr = 'select * from member where university_id="%s"';
+        var userdetailquery = util.format(userdetailstr,current);
+        var userdetailresult = yield databaseUtils.executeQuery(userdetailquery);
+        var userdetails = userdetailresult[0];
+
+        var studentdetailstr = 'select * from student';
+        var studentdetailresult = yield databaseUtils.executeQuery(studentdetailstr);
+        var studentdetails = studentdetailresult[0];
+        
+        yield this.render('students',{
+
+            userdetails:userdetails,
+            currentlist:userdetailresult,
+
+            studentdetails:studentdetails,
+            studentlist:studentdetailresult
+
+        });
+    },
+
+    showVolunteersPage: function* (next) {
+
+        var current = this.currentUser.university_id;
+        var userdetailstr = 'select * from member where university_id="%s"';
+        var userdetailquery = util.format(userdetailstr,current);
+        var userdetailresult = yield databaseUtils.executeQuery(userdetailquery);
+        var userdetails = userdetailresult[0];
+
+        var volunteerdetailstr = 'select * from member';
+        var volunteerdetailresult = yield databaseUtils.executeQuery(volunteerdetailstr);
+        var volunteerdetails = volunteerdetailresult[0];
+        
+        
+        yield this.render('volunteers',{
+
+            userdetails:userdetails,
+            currentlist:userdetailresult,
+
+            volunteerdetails:volunteerdetails,
+            volunteerlist:volunteerdetailresult
+
+        });
+    },
+
+
     logout: function* (next) {
         var sessionId = this.cookies.get("SESSION_ID");
         if(sessionId) {
