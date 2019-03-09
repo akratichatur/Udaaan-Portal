@@ -1,6 +1,9 @@
 {
-  "name": "Udaaan_Portal",
+  "name": "Udaaan-Portal",
   "version": "0.0.1",
+  "engines": {
+    "node": "8.11.3"
+	}
   "dependencies": {
     "cluster": "^0.7.7",
     "co": "^4.6.0",
