@@ -13,7 +13,6 @@ module.exports = {
 
         if (typeof p==typeof 'string')
         {
-            console.log(p);
             var queryString='update attendance set '+column_name+' ="1" where university_id="%s" ';
             var query=util.format(queryString,p);
             var result=yield databaseUtils.executeQuery(query);
@@ -25,7 +24,6 @@ module.exports = {
             //alert(p.length+" members are present");
             for(var i=0;i<p.length;i++)
             {
-                console.log(p[i]);
                 var queryString='update attendance set '+column_name+' ="1" where university_id="%s" ';
                 var query=util.format(queryString,p[i]);
                 var result=yield databaseUtils.executeQuery(query);
@@ -44,16 +42,16 @@ module.exports = {
         var userdetailresult = yield databaseUtils.executeQuery(userdetailquery);
         var userdetails = userdetailresult[0];
 
-        var firststr = 'select * from member where year="1"';
+        var firststr = 'select * from member where year="1" order by name';
         var firstresult = yield databaseUtils.executeQuery(firststr);
         
-        var secondstr = 'select * from member where year="2"';
+        var secondstr = 'select * from member where year="2" order by name';
         var secondresult = yield databaseUtils.executeQuery(secondstr);
         
         var thirdstr = 'select * from member where year="3" order by name';
         var thirdresult = yield databaseUtils.executeQuery(thirdstr);
 
-        var fourthstr = 'select * from member where year="4"';
+        var fourthstr = 'select * from member where year="4" order by name';
         var fourthresult = yield databaseUtils.executeQuery(fourthstr);
         
         yield this.render('attendance',{

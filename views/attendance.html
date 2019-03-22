@@ -17,6 +17,7 @@
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="/static/styles/user.css">
+  <link rel="stylesheet" href="/static/styles/footer.css">
   <!-- endinject -->
 <script>
  function popup(){
@@ -165,8 +166,8 @@
         </div>
         </div>
 
-        <div class="panel-body">
-            <div class="tab-content" id="nav-tabContent">
+<div class="panel-body">
+<div class="tab-content" id="nav-tabContent">
 <!--1st year attendance-->
 
 <div class="tab-pane fade show active" id="first">
@@ -184,7 +185,7 @@
 </tr>
 </thead>
 <tbody>
-        <% for(var i in firstlist) { %>
+<% for(var i in firstlist) { %>
 <tr>
 <td class="font-weight-medium">
 <div class="checkbox-inline">
@@ -205,118 +206,119 @@
 </div>
 </div>
 
-  <!--2nd year attendance-->
-  <div class="tab-pane fade" id="second">
-  <div class="table-responsive">
-        <form method="post" action="/app/attend">
-        <table class="table table-bordered">
-        <thead>
-        <tr>
-        <th>SELECT</th>
-        <th>UNIVERSITY ID</th>
-        <th>MEMBER</th>
-        <th>COURSE</th>
-        <th>YEAR</th>
-        <th>ATTENDANCE %age</th>
-        </tr>
-        </thead>
-        <tbody>
-                <% for(var i in secondlist) { %>
-        <tr>
-        <td class="font-weight-medium">
-        <div class="checkbox-inline">
-        <label class="checkbox-inline"><input type="checkbox" style="width: 20px; height:20px;" name="p" value="<%= secondlist[i].university_id %>" checked></label>
-        </div>
-        </td>
-        <td><%= secondlist[i].university_id %></td>
-        <td><%= secondlist[i].name %></td>
-        <td><%= secondlist[i].course %></td>
-        <td><%= secondlist[i].year %></td>
-        <td>____</td>
-        </tr>
-        <% } %>
-        </tbody>
-        </table>
-        <br><center><input type="submit" value="Save Attendance" class="btn btn-primary" onclick="popup()"></center><br>
-        </form>
-        </div>
-  </div>
+<!--2nd year attendance-->
+<div class="tab-pane fade" id="second">
+<div class="table-responsive">
+<form method="post" action="/app/attend">
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>SELECT</th>
+<th>UNIVERSITY ID</th>
+<th>MEMBER</th>
+<th>COURSE</th>
+<th>YEAR</th>
+<th>ATTENDANCE %age</th>
+</tr>
+</thead>
+<tbody>
+<% for(var i in secondlist) { %>
+<tr>
+<td class="font-weight-medium">
+<div class="checkbox-inline">
+<label class="checkbox-inline"><input type="checkbox" style="width: 20px; height:20px;" name="p" value="<%= secondlist[i].university_id %>" checked></label>
+</div>
+</td>
+<td><%= secondlist[i].university_id %></td>
+<td><%= secondlist[i].name %></td>
+<td><%= secondlist[i].course %></td>
+<td><%= secondlist[i].year %></td>
+<td>____</td>
+</tr>
+<% } %>
+</tbody>
+</table>
+<br><center><input type="submit" value="Save Attendance" class="btn btn-primary" onclick="popup()"></center><br>
+</form>
+</div>
+</div>
 
-  <!--3rd year attendance-->
-  <div class="tab-pane fade" id="third">
-  <div class="table-responsive">
-        <form method="post" action="/app/attend">
-        <table class="table table-bordered">
-        <thead>
-        <tr>
-        <th>SELECT</th>
-        <th>UNIVERSITY ID</th>
-        <th>MEMBER</th>
-        <th>COURSE</th>
-        <th>YEAR</th>
-        <th>ATTENDANCE %age</th>
-        </tr>
-        </thead>
-        <tbody>
-                <% for(var i in thirdlist) { %>
-        <tr>
-        <td class="font-weight-medium">
-        <div class="checkbox-inline">
-        <label class="checkbox-inline"><input type="checkbox" style="width: 20px; height:20px;" name="p" value="<%= thirdlist[i].university_id %>" checked></label>
-        </div>
-        </td>
-        <td><%= thirdlist[i].university_id %></td>
-        <td><%= thirdlist[i].name %></td>
-        <td><%= thirdlist[i].course %></td>
-        <td><%= thirdlist[i].year %></td>
-        <td>____</td>
-        </tr>
-        <% } %>
-        </tbody>
-        </table>
-        <br><center><input type="submit" value="Save Attendance" class="btn btn-primary" onclick="popup()"></center><br>
-        </form>
-        </div>
-      </div>
+<!--3rd year attendance-->
+<div class="tab-pane fade" id="third">
+<div class="table-responsive">
+<form method="post" action="/app/attend">
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>SELECT</th>
+<th>UNIVERSITY ID</th>
+<th>MEMBER</th>
+<th>COURSE</th>
+<th>YEAR</th>
+<th>ATTENDANCE %age</th>
+</tr>
+</thead>
+<tbody>
+<% for(var i in thirdlist) { %>
+<tr>
+<td class="font-weight-medium">
+<div class="checkbox-inline">
+<label class="checkbox-inline"><input type="checkbox" style="width: 20px; height:20px;" name="p" value="<%= thirdlist[i].university_id %>" checked></label>
+</div>
+</td>
+<td><%= thirdlist[i].university_id %></td>
+<td><%= thirdlist[i].name %></td>
+<td><%= thirdlist[i].course %></td>
+<td><%= thirdlist[i].year %></td>
+<td>____</td>
+</tr>
+<% } %>
+</tbody>
+</table>
+<br><center><input type="submit" value="Save Attendance" class="btn btn-primary" onclick="popup()"></center><br>
+</form>
+</div>
+</div>
 
-  <!--4th year attendance-->
-  <div class="tab-pane fade" id="fourth">
-  <div class="table-responsive">
-        <form method="post" action="/app/attend">
-        <table class="table table-bordered">
-        <thead>
-        <tr>
-        <th>SELECT</th>
-        <th>UNIVERSITY ID</th>
-        <th>MEMBER</th>
-        <th>COURSE</th>
-        <th>YEAR</th>
-        <th>ATTENDANCE %age</th>
-        </tr>
-        </thead>
-        <tbody>
-                <% for(var i in fourthlist) { %>
-        <tr>
-        <td class="font-weight-medium">
-        <div class="checkbox-inline">
-        <label class="checkbox-inline"><input type="checkbox" style="width: 20px; height:20px;" name="p" value="<%= fourthlist[i].university_id %>" checked></label>
-        </div>
-        </td>
-        <td><%= fourthlist[i].university_id %></td>
-        <td><%= fourthlist[i].name %></td>
-        <td><%= fourthlist[i].course %></td>
-        <td><%= fourthlist[i].year %></td>
-        <td>____</td>
-        </tr>
-        <% } %>
-        </tbody>
-        </table>
-        <br><center><input type="submit" value="Save Attendance" class="btn btn-primary" onclick="popup()"></center><br>
-        </form>
-        </div>
-  </div>
-      </div> 
-        </div>  
+<!--4th year attendance-->
+<div class="tab-pane fade" id="fourth">
+<div class="table-responsive">
+<form method="post" action="/app/attend">
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>SELECT</th>
+<th>UNIVERSITY ID</th>
+<th>MEMBER</th>
+<th>COURSE</th>
+<th>YEAR</th>
+<th>ATTENDANCE %age</th>
+</tr>
+</thead>
+<tbody>
+<% for(var i in fourthlist) { %>
+<tr>
+<td class="font-weight-medium">
+<div class="checkbox-inline">
+<label class="checkbox-inline"><input type="checkbox" style="width: 20px; height:20px;" name="p" value="<%= fourthlist[i].university_id %>" checked></label>
+</div>
+</td>
+<td><%= fourthlist[i].university_id %></td>
+<td><%= fourthlist[i].name %></td>
+<td><%= fourthlist[i].course %></td>
+<td><%= fourthlist[i].year %></td>
+<td>____</td>
+</tr>
+<% } %>
+</tbody>
+</table>
+<br><center><input type="submit" value="Save Attendance" class="btn btn-primary" onclick="popup()"></center><br>
+</form>
+</div>
+</div>
+</div> 
+</div>  
+
 </div>
 </div>
 </div>
@@ -325,26 +327,7 @@
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-                <div class="container-fluid clearfix">
-                  <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
-                    <a href="http://www.udaaan.org/" target="_blank">UdaaanAasmaTak</a>. All rights reserved.</span>
-                 <!-- <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
-                    <i class="mdi mdi-heart text-danger"></i>
-                  </span>-->
-                  <div class="template-demo">
-                      <button type="button" class="btn social-btn btn-rounded btn-facebook">
-                        <i class="mdi mdi-facebook"></i>
-                      </button>
-                      <button type="button" class="btn social-btn btn-rounded btn-twitter">
-                        <i class="mdi mdi-twitter"></i>
-                      </button>
-                      <button type="button" class="btn social-btn btn-rounded btn-instagram" style="background:rgb(191, 74, 226);">
-                          <i class="mdi mdi-instagram"></i>
-                        </button>
-                    </div>
-               </div>
-              </footer>
+      <% include footer.html %>
               <!-- partial -->
             </div>
             <!-- main-panel ends -->

@@ -140,18 +140,35 @@ module.exports = {
         var userdetailresult = yield databaseUtils.executeQuery(userdetailquery);
         var userdetails = userdetailresult[0];
 
-        var volunteerdetailstr = 'select * from member';
-        var volunteerdetailresult = yield databaseUtils.executeQuery(volunteerdetailstr);
-        var volunteerdetails = volunteerdetailresult[0];
+        var firststr = 'select * from member where year="1" order by name';
+        var firstresult = yield databaseUtils.executeQuery(firststr);
         
+        var secondstr = 'select * from member where year="2" order by name';
+        var secondresult = yield databaseUtils.executeQuery(secondstr);
+        
+        var thirdstr = 'select * from member where year="3" order by name';
+        var thirdresult = yield databaseUtils.executeQuery(thirdstr);
+
+        var fourthstr = 'select * from member where year="4" order by name';
+        var fourthresult = yield databaseUtils.executeQuery(fourthstr);
+         
         
         yield this.render('volunteers',{
 
             userdetails:userdetails,
             currentlist:userdetailresult,
+            
+            firstresult:firstresult,
+            firstlist:firstresult,
 
-            volunteerdetails:volunteerdetails,
-            volunteerlist:volunteerdetailresult
+            secondresult:secondresult,
+            secondlist:secondresult,
+
+            thirdresult:thirdresult,
+            thirdlist:thirdresult,
+
+            fourthresult:fourthresult,
+            fourthlist:fourthresult
 
         });
     },

@@ -1,0 +1,62 @@
+var sessionUtils = require('../utils/sessionUtils');
+var util=require('util');
+var databaseUtils = require('./../utils/databaseUtils');
+
+module.exports = {
+    
+    modifyPage: function* (next) {
+      
+        var u_id=this.currentUser.university_id;
+        var id4='select university_id from member where university_id="%s"';
+        var id3=util.format(id4,u_id);
+        var id2=yield databaseUtils.executeQuery(id3);
+        var id=id2[0];
+                         
+//personal details
+
+var rname=this.request.body.fields.rname;
+var rcontact_no=this.request.body.fields.rcontact_no;
+var remail=this.request.body.fields.remail;
+        
+
+var iname=this.request.body.files;
+this.body=iname;
+var url=this.body.imgname.path;
+var isize=this.body.imgname.size;
+var appurl=url.replace(/\\/g,"/");
+var appurl1=appurl.replace(/static\/static/g,'static');
+
+
+        if (isize){
+            var queryString='update member set name="%s", contact_no="%s" ,email_id="%s",photo="%s" where id=%s ';
+            var query=util.format(queryString,rname,rcontact_no,remail,appurl1,id);
+            var result=yield databaseUtils.executeQuery(query);    
+        }
+
+        else{
+            
+        var queryString='update member set name="%s", contact_no=%s ,email_id="%s" where id=%s ';
+        var query=util.format(queryString,rname,rcontact_no,remail,id);
+        var result=yield databaseUtils.executeQuery(query);
+        
+        }
+
+        var rr =this.currentUser.university_id;
+        var val='/app/admin/'+rr+'?update=true';
+        this.redirect(val);
+
+
+    },
+
+
+    showUpdatePage: function* (next) {
+
+   
+       yield this.render('update',{
+
+           });
+
+    },
+    
+}
+

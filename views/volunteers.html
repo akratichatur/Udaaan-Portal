@@ -16,6 +16,7 @@
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="/static/styles/user.css">
+  <link rel="stylesheet" href="/static/styles/footer.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
@@ -159,39 +160,167 @@
                                 </ul>
                         </div>
                         </div>
-            <div class="row">
-                    <% for(var i in volunteerlist) { %>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 grid-margin stretch-card">
-                    <div class="card card-statistics">
-                      <div class="card-body">
-                        <div class="clearfix">
-                          <div class="float-left">
-                            <i class="mdi mdi-account-location text-info icon-lg"></i>
-                          </div>
-                          <div class="float-right">
-                            <p class="mb-0 text-right"><%= volunteerlist[i].udaaan_id %></p><br>
-                            <div class="fluid-container">
-                              <h4 class="font-weight-medium text-right mb-0"><%= volunteerlist[i].name %></h3>
-                            </div>
-                            <div class="fluid-container">
-                                    <p class="mb-0 text-right"><%= volunteerlist[i].name %></p>
-                              </div>
-                              <div class="fluid-container">
-                                    <p class="mb-0 text-right"><%= volunteerlist[i].name %></p>
-                              </div>
-                          </div>
-                        </div>
-                        <p class="text-muted mt-3 mb-0">
-                          <i class="mdi mdi-reload mr-1" aria-hidden="true"></i>GLA Unit
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <% } %>
-                </div>
 
+<div class="panel-body">
+<div class="tab-content" id="nav-tabContent">
+
+<!--First year members-->
+<div class="tab-pane fade show active" id="first">
+  <div class="row">
+    <% for(var i in firstlist) { %>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+    <div class="card-body">
+    <div class="clearfix">
+    <div class="float-left">
+      <img class="img-xs rounded-circle" style="width: 80px; height: 80px;" src="<%= firstlist[i].photo %>" alt="image">
+    </div>
+    <div class="float-right">
+    <p class="mb-0 text-right"><%= firstlist[i].udaaan_id %></p><br>
+    <div class="fluid-container">
+    <h4 class="font-weight-medium text-right mb-0"><%= firstlist[i].name %></h3>
+    </div>
+    <div class="fluid-container">
+    <p class="mb-0 text-right"><%= firstlist[i].course %>, <%= firstlist[i].department %> </p>
+    </div>
+    <div class="fluid-container">
+    <p class="mb-0 text-right"><%= firstlist[i].year %>&nbsp;year</p>
+    </div>
+    <div class="fluid-container">
+      <p class="mb-0 text-right"><a href="mailto:<%= firstlist[i].email_id %>"><%= firstlist[i].email_id %></a></p>
+      </div>
+    </div>
+    </div>
+    <p class="text-muted mt-3 mb-0">
+    <i class="mdi mdi-reload mr-1" aria-hidden="true"></i>GLA Unit
+    </p>
+    </div>
+    </div>
+    </div>
+    <% } %>
+    </div>
+</div>
+
+<!--Second year members-->
+<div class="tab-pane fade" id="second">
+  <div class="row">
+    <% for(var i in secondlist) { %>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+    <div class="card-body">
+    <div class="clearfix">
+    <div class="float-left">
+      <img class="img-xs rounded-circle" style="width: 80px; height: 80px;" src="<%= secondlist[i].photo %>" alt="image">
+    </div>
+    <div class="float-right">
+    <p class="mb-0 text-right"><%= secondlist[i].udaaan_id %></p><br>
+    <div class="fluid-container">
+    <h4 class="font-weight-medium text-right mb-0"><%= secondlist[i].name %></h3>
+    </div>
+    <div class="fluid-container">
+    <p class="mb-0 text-right"><%= secondlist[i].course %>, <%= secondlist[i].department %></p>
+    </div>
+    <div class="fluid-container">
+      <p class="mb-0 text-right"><%= secondlist[i].year %>&nbsp;year</p>
+      </div>
+      <div class="fluid-container">
+        <p class="mb-0 text-right"><a href="mailto:<%= secondlist[i].email_id %>"><%= secondlist[i].email_id %></a></p>
         </div>
+    </div>
+    </div>
+    <p class="text-muted mt-3 mb-0">
+    <i class="mdi mdi-reload mr-1" aria-hidden="true"></i>GLA Unit
+    </p>
+    </div>
+    </div>
+    </div>
+    <% } %>
+    </div>
+</div>
+
+<!--Third year members-->
+<div class="tab-pane fade" id="third">
+  <div class="row">
+    <% for(var i in thirdlist) { %>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+    <div class="card-body">
+    <div class="clearfix">
+    <div class="float-left">
+      <img class="img-xs rounded-circle" style="width: 80px; height: 80px;" src="<%= thirdlist[i].photo %>" alt="image">
+    </div>
+    <div class="float-right">
+    <p class="mb-0 text-right"><%= thirdlist[i].udaaan_id %></p><br>
+    <div class="fluid-container">
+    <h4 class="font-weight-medium text-right mb-0"><%= thirdlist[i].name %></h3>
+    </div>
+    <div class="fluid-container">
+    <p class="mb-0 text-right"><%= thirdlist[i].course %>, <%= thirdlist[i].department %></p>
+    </div>
+    <div class="fluid-container">
+      <p class="mb-0 text-right"><%= thirdlist[i].year %>&nbsp;year</p>
+      </div>
+      <div class="fluid-container">
+        <p class="mb-0 text-right"><a href="mailto:<%= thirdlist[i].email_id %>"><%= thirdlist[i].email_id %></a></p>
+        </div>
+    </div>
+    </div>
+    <p class="text-muted mt-3 mb-0">
+    <i class="mdi mdi-reload mr-1" aria-hidden="true"></i>GLA Unit
+    </p>
+    </div>
+    </div>
+    </div>
+    <% } %>
+    </div>
+</div>
+
+<!--Fourth year members-->
+<div class="tab-pane fade" id="fourth">
+  <div class="row">
+    <% for(var i in fourthlist) { %>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+    <div class="card-body">
+    <div class="clearfix">
+    <div class="float-left">
+      <img class="img-xs rounded-circle" style="width: 80px; height: 80px;" src="<%= fourthlist[i].photo %>" alt="image">
+    </div>
+    <div class="float-right">
+    <p class="mb-0 text-right"><%= fourthlist[i].udaaan_id %></p><br>
+    <div class="fluid-container">
+    <h4 class="font-weight-medium text-right mb-0"><%= fourthlist[i].name %></h3>
+    </div>
+    <div class="fluid-container">
+    <p class="mb-0 text-right"><%= fourthlist[i].course %>, <%= fourthlist[i].department %></p>
+    </div>
+    <div class="fluid-container">
+      <p class="mb-0 text-right"><%= fourthlist[i].year %>&nbsp;year</p>
+      </div>
+      <div class="fluid-container">
+        <p class="mb-0 text-right"><a href="mailto:<%= fourthlist[i].email_id %>"><%= fourthlist[i].email_id %></a></p>
+        </div>
+    </div>
+    </div>
+    <p class="text-muted mt-3 mb-0">
+    <i class="mdi mdi-reload mr-1" aria-hidden="true"></i>GLA Unit
+    </p>
+    </div>
+    </div>
+    </div>
+    <% } %>
+    </div>
+</div>
+
+</div>
+</div>
+
+
+
+
+</div>
         <!-- content-wrapper ends -->
+        <% include footer.html %>
         <!-- partial -->
       </div>
    </div>

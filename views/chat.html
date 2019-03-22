@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/static/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="/static/vendors/css/vendor.bundle.addons.css">
   <link rel="stylesheet" href="/static/styles/user.css">
+  <link rel="stylesheet" href="/static/styles/footer.css">
   <link rel="shortcut icon" href="images/favicon.png" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
   <link href="/static/styles/chat.css" rel="stylesheet" />
@@ -135,26 +136,36 @@ Sign Out
 </ul>
 </nav>
 
+
+<div class="main-panel">
+    <div class="content-wrapper">
+ 
 <!--Chat window-->
 <div id="mario-chat">
-<h2>Udaaan Family Chat</h2>
-<div id="chat-window">
-<div id="output"></div>
-<div id="feedback"></div>
-</div>
-<input id="handle" type="hidden" placeholder="Handle" />
-<input id="username" type="hidden" placeholder="username" value="<%= userdetails.name %>"/>
-<input id="message" type="text" placeholder="Message" />
-<button id="send">Send</button>
-</div>
-<!-- end Chat window-->
+    <h2>Udaaan Family Chat</h2>
+    <div id="chat-window">
+    <div id="output"></div>
+    <div id="feedback"></div>
+    </div>
+    <input id="handle" type="hidden" placeholder="Handle" />
+    <input id="username" type="hidden" placeholder="username" value="<%= userdetails.name %>"/>
+    <input id="message" type="text" placeholder="Message" />
+    <button id="send">Send</button>
+    </div>
+    <!-- end Chat window-->
+    </div>
+    <!-- content-wrapper ends -->
+ <% include footer.html%>
+    <!-- partial -->
+  </div>
 </div>
   </div>
+  
   <script src="/static/vendors/js/vendor.bundle.base.js"></script>
   <script src="/static/vendors/js/vendor.bundle.addons.js"></script>
   <script src="/static/scripts/js/off-canvas.js"></script>
   <script src="/static/scripts/js/misc.js"></script>
   <script src="/static/scripts/js/dashboard.js"></script>
-  <script src="/static/scripts/chat.js"></script>s
+  <script src="/static/scripts/chat.js"></script>
 </body>
 </html>
