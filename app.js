@@ -1,5 +1,5 @@
-//var app = require('koa')();
-//var socket = require('socket.io');
+var app = require('koa')();
+var socket = require('socket.io');
 
 var cors = require('koa-cors');
 var mount = require('koa-mount');
